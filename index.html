@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O Churrasqueiro · Premium Digital Churrasco Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <a href="#home" class="logo">O Churrasqueiro</a>
+    <nav aria-label="Principal">
+      <a href="#home">Início</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#sacola" class="link-sacola">Sacola <span id="qtd-sacola">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Homepage -->
+    <section id="home" data-tela>
+      <div class="hero">
+        <h1>A tradição do fogo na velocidade do clique.</h1>
+        <p>Peça sem baixar app e sem cadastro longo. A brasa cuida do resto.</p>
+      </div>
+      <div class="acoes">
+        <a class="btn btn-fogo" href="#cardapio">Fazer pedido</a>
+        <button class="btn btn-borda" id="abrir-login" type="button">Acesso da equipe</button>
+      </div>
+    </section>
+
+    <!-- 2. Cardápio -->
+    <section id="cardapio" data-tela hidden>
+      <h2>Cardápio</h2>
+      <ul id="lista-produtos" class="lista"></ul>
+    </section>
+
+    <!-- 3. Sacola -->
+    <section id="sacola" data-tela hidden>
+      <h2>Sua sacola</h2>
+      <ul id="lista-sacola" class="sacola"></ul>
+      <p id="sacola-vazia" class="vazio" hidden>Sua sacola está vazia. Escolha um item no cardápio.</p>
+      <div id="resumo" class="resumo">
+        <label for="endereco">Endereço de entrega</label>
+        <input id="endereco" type="text" placeholder="Rua, número, bairro" autocomplete="street-address">
+        <p class="total">Total <strong id="total">R$ 0,00</strong></p>
+        <div class="acoes">
+          <a class="btn btn-borda" href="#cardapio">Adicionar mais produtos</a>
+          <button class="btn btn-fogo" id="finalizar" type="button">Finalizar pedido</button>
+        </div>
+        <p id="msg-pedido" class="aviso" role="status" hidden></p>
+      </div>
+    </section>
+
+    <!-- Extra: calculadora de carnes -->
+    <section id="calculadora" data-tela hidden>
+      <h2>Calculadora de carnes</h2>
+      <p class="apoio">Considera 400 g por adulto e 200 g por criança.</p>
+      <div class="calc">
+        <label for="adultos">Adultos</label>
+        <input id="adultos" type="number" min="0" value="0" inputmode="numeric">
+        <label for="criancas">Crianças</label>
+        <input id="criancas" type="number" min="0" value="0" inputmode="numeric">
+        <p class="total">Quantidade ideal <strong id="resultado-calc">0 g</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div>
+      <h3>Contato</h3>
+      <p>WhatsApp: (61) 90000-0000<br>contato@ochurrasqueiro.com.br</p>
+    </div>
+    <div>
+      <h3>Sobre nós</h3>
+      <p>Churrasco premium com pedido digital: menos fila, mais brasa.</p>
+    </div>
+    <div>
+      <h3>Redes sociais</h3>
+      <p><a href="#">Instagram</a> · <a href="#">WhatsApp</a> · <a href="#">Facebook</a></p>
+    </div>
+    <p class="tagline">Premium Digital Churrasco Service</p>
+  </footer>
+
+  <!-- Popup de detalhes do produto -->
+  <dialog id="popup-produto" aria-labelledby="pp-nome">
+    <button class="fechar" data-fechar aria-label="Fechar">×</button>
+    <div class="foto" id="pp-foto"></div>
+    <h3 id="pp-nome"></h3>
+    <p id="pp-descricao"></p>
+    <p class="detalhe"><strong>Ingredientes:</strong> <span id="pp-ingredientes"></span></p>
+    <p class="detalhe"><strong>Preparo:</strong> <span id="pp-preparo"></span></p>
+    <p class="total"><strong id="pp-preco"></strong></p>
+    <button class="btn btn-fogo" id="pp-adicionar" type="button">Adicionar à sacola</button>
+  </dialog>
+
+  <!-- Login da equipe (apenas visual no protótipo) -->
+  <dialog id="popup-login" aria-labelledby="pl-titulo">
+    <button class="fechar" data-fechar aria-label="Fechar">×</button>
+    <h3 id="pl-titulo">Acesso da equipe</h3>
+    <label for="usuario">Usuário</label>
+    <input id="usuario" type="text" autocomplete="username">
+    <label for="senha">Senha</label>
+    <input id="senha" type="password" autocomplete="current-password">
+    <button class="btn btn-fogo" type="button" data-fechar>Entrar</button>
+    <p class="apoio">Protótipo: o painel da cozinha entra na próxima etapa.</p>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
